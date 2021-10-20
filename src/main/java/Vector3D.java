@@ -1,37 +1,77 @@
 import java.util.Objects;
 
+import static java.lang.Math.sqrt;
+
 public class Vector3D {
-    protected Point3D p1, p2;
+    private Point3D start;
+    private Point3D end;
+
+    public Vector3D() {
+        start = new Point3D();
+        end = new Point3D();
+    }
+
+    public Vector3D(double x, double y, double z) {
+        start = new Point3D();
+        end = new Point3D(x, y, z);
+    }
+
+    public Vector3D(Point3D a, Point3D b) {
+        start = a;
+        end = b;
+    }
+
+    public double length() {
+        return sqrt((start.getX() - end.getX()) * (start.getX() - end.getX()) + (start.getY() - end.getY()) * (start.getY() - end.getY()) + (start.getZ() - end.getZ()) * (start.getZ() - end.getZ()));
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Vector3D)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Vector3D vector3D = (Vector3D) o;
-        return p1.equals(vector3D.p1) && p2.equals(vector3D.p2);
+        return Objects.equals(start, vector3D.start) && Objects.equals(end, vector3D.end);
+    }
+
+    public Point3D getStart() {
+        return start;
+    }
+
+    public void setStart(Point3D start) {
+        this.start = start;
+    }
+
+    public Point3D getEnd() {
+        return end;
+    }
+
+    public void setEnd(Point3D end) {
+        this.end = end;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(p1, p2);
+        return Objects.hash(start, end);
     }
 
-    public Vector3D(Point3D x1, Point3D x2) {
-        this.p1 = x1;
-        this.p2 = x2;
+    @Override
+    public String toString() {
+        return "Vector3D{" +
+                "start=" + start +
+                ", end=" + end +
+                '}';
     }
 
-    public Vector3D(double x1, double y1, double z1, double x2, double y2, double z2) {
-        p1 = new Point3D(x1, y1, z1);
-        p2 = new Point3D(x2, y2, z2);
-    }
+    public static void main(String[] args) {
+        Vector3D vector1 = new Vector3D(1, 2, 3);
+        Vector3D vector2 = new Vector3D(new Point3D(1, 2, 3), new Point3D(5, 6, 7));
+        Vector3D vector3 = new Vector3D(new Point3D(1, 2, 3), new Point3D(5, 6, 7));
 
-    public Vector3D() {
-        p1 = new Point3D();
-        p2 = new Point3D();
-    }
+        System.out.println(vector1.equals(vector2));
+        System.out.println(vector3.equals(vector2));
 
-    public double getVectorSize() {
-        return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+        System.out.println(vector1.length());
+
+        System.out.println(vector3);
     }
 }
