@@ -24,7 +24,7 @@ public class Vector3DArrayTest {
     }
 
     @Test
-    public void testGetLinearCombinationWell() throws Exception {
+    public void testGetLinearCombinationWell() {
         double[] koef = {1, 2, 0, 0, 1};
         assertEquals(varray.lineCombination(koef), new Vector3D(1, 2, 3));
     }
@@ -68,7 +68,7 @@ public class Vector3DArrayTest {
     }
 
     @Test(expectedExceptions = {IllegalArgumentException.class})
-    public void testGetLinearCombination() throws Exception {
+    public void testGetLinearCombination() {
         double[] coef = {1, 2, 0, 1};
         Vector3D actual = varray.lineCombination(coef);
     }
