@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class FinanceReportProcessor {
+
     public static FinanceReport getReport(FinanceReport financeReport, String begin) {
         ArrayList<Payment> arrayList = new ArrayList<>();
         for (int i = 0; i < financeReport.getCount(); i++) {
@@ -19,6 +21,8 @@ public class FinanceReportProcessor {
     }
 
     public static FinanceReport getPayment(FinanceReport financeReport, double sumMax) {
+        Calendar calendar = Calendar.getInstance();
+
         ArrayList<Payment> arrayList = new ArrayList<>();
         for (int i = 0; i < financeReport.getCount(); i++) {
             if (financeReport.getPayment(i).getSum() < sumMax) arrayList.add(financeReport.getPayment(i));
@@ -33,7 +37,8 @@ public class FinanceReportProcessor {
 
 
         Date date = new Date();
-        return new FinanceReport(String.valueOf(sumMax), date.getYear(), date.getMonth(), date.getDay(), payments);
+        return new FinanceReport(String.valueOf(sumMax), calendar.get(Calendar.YEAR) - 1900,
+                calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), payments);
     }
 
     public static void main(String[] args) {
