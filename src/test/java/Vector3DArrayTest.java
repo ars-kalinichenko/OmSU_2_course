@@ -4,10 +4,10 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
+//todo: rewrite
 public class Vector3DArrayTest {
 
     private final Vector3DArray varray = new Vector3DArray(5);
-
 
     @Test
     public void testGetMaxLength() {
@@ -70,7 +70,7 @@ public class Vector3DArrayTest {
     @Test(expectedExceptions = {IllegalArgumentException.class})
     public void testGetLinearCombination() {
         double[] coef = {1, 2, 0, 1};
-        Vector3D actual = varray.lineCombination(coef);
+        varray.lineCombination(coef);
     }
 
 

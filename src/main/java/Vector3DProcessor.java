@@ -19,9 +19,6 @@ public class Vector3DProcessor {
     }
 
     public static boolean isCollinear(Vector3D v1, Vector3D v2) {
-        return (Double.compare(v1.getX() / v2.getX(), v1.getY() / v2.getY()) == 0) &&
-                (Double.compare(v1.getY() / v2.getY(), v1.getZ() / v2.getZ()) == 0) &&
-                (Double.compare(v1.getX() / v2.getX(), v1.getZ() / v2.getZ()) == 0);
-
+        return vec(v1, v2).equals(new Vector3D());
     }
 }

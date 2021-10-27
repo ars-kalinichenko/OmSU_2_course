@@ -1,17 +1,25 @@
 import java.util.Arrays;
 import java.util.Objects;
 
+// todo: add test
 public class FinanceReport {
     private final Payment[] arr;
+
+    public String getName() {
+        return name;
+    }
+
     private final String name;
+
+    // TODO: to Date class
     private final int year;
     private final int month;
     private final int day;
 
     public FinanceReport(String name, int year, int month, int day, Payment... arr) {
-        if (year < 0) throw new ArithmeticException("...");
-        if (month > 12 || month < 1) throw new ArithmeticException();
-        if (day < 1 || day > 31) throw new ArithmeticException();
+        if (year < 0) throw new IllegalArgumentException("...");
+        if (month > 12 || month < 1) throw new IllegalArgumentException();
+        if (day < 1 || day > 31) throw new IllegalArgumentException();
 
         this.name = name;
         this.year = year;
@@ -39,7 +47,7 @@ public class FinanceReport {
     }
 
     public int getCount() {
-        return arr.length; // if arr == null - exeption
+        return arr.length;
     }
 
     public Payment getPayment(int index) {
@@ -54,7 +62,9 @@ public class FinanceReport {
 
     @Override
     public String toString() {
-        return "[Автор: " + name + ", Дата: " + day + "." + month + "." + year + ", Платежи: " + Arrays.toString(arr) + "\n]";
+        // todo: add string formatter
+        return "[Автор: " + name + ", Дата: " + day + "." + month + "." + year + ", Платежи: "
+                + Arrays.toString(arr) + "\n]";
     }
 
     private Payment[] arrayCopy(Payment[] arr) {

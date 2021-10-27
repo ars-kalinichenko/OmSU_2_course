@@ -22,7 +22,8 @@ public class Point3D {
         if (this == o) return true;
         if (!(o instanceof Point3D)) return false;
         Point3D point3D = (Point3D) o;
-        return Double.compare(point3D.getX(), getX()) == 0 && Double.compare(point3D.getY(), getY()) == 0 && Double.compare(point3D.getZ(), getZ()) == 0;
+        return Double.compare(point3D.getX(), getX()) == 0 && Double.compare(point3D.getY(), getY()) == 0
+                && Double.compare(point3D.getZ(), getZ()) == 0;
     }
 
     @Override
@@ -54,9 +55,6 @@ public class Point3D {
         this.z = z;
     }
 
-    public void printPoint() {
-        System.out.printf("X=%f, Y=%f, Z=%f", x, y, z);
-    }
 
     @Override
     public String toString() {

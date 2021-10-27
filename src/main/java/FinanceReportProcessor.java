@@ -1,13 +1,17 @@
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
+//add test
 public class FinanceReportProcessor {
 
     public static FinanceReport getReport(FinanceReport financeReport, String begin) {
+        Calendar calendar = Calendar.getInstance();
+
         ArrayList<Payment> arrayList = new ArrayList<>();
         for (int i = 0; i < financeReport.getCount(); i++) {
-            if (financeReport.getPayment(i).getName().startsWith(begin)) arrayList.add(financeReport.getPayment(i));
+            if (financeReport.getPayment(i).getName().startsWith(begin)) {
+                arrayList.add(financeReport.getPayment(i));
+            }
         }
 
         Payment[] payments = new Payment[arrayList.size()];
@@ -16,8 +20,8 @@ public class FinanceReportProcessor {
             payments[index] = payment;
             index++;
         }
-        Date date = new Date();
-        return new FinanceReport(begin, date.getYear(), date.getMonth(), date.getDay(), payments);
+        return new FinanceReport(financeReport.getName(), calendar.get(Calendar.YEAR) - 1900,
+                calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), payments);
     }
 
     public static FinanceReport getPayment(FinanceReport financeReport, double sumMax) {
@@ -25,19 +29,19 @@ public class FinanceReportProcessor {
 
         ArrayList<Payment> arrayList = new ArrayList<>();
         for (int i = 0; i < financeReport.getCount(); i++) {
-            if (financeReport.getPayment(i).getSum() < sumMax) arrayList.add(financeReport.getPayment(i));
+            if (financeReport.getPayment(i).getSum() < sumMax) {
+                arrayList.add(financeReport.getPayment(i));
+            };
         }
 
         Payment[] payments = new Payment[arrayList.size()];
         int index = 0;
         for (Payment payment : arrayList) {
+            //todo: link to copy
             payments[index] = payment;
             index++;
         }
-
-
-        Date date = new Date();
-        return new FinanceReport(String.valueOf(sumMax), calendar.get(Calendar.YEAR) - 1900,
+        return new FinanceReport(financeReport.getName(), calendar.get(Calendar.YEAR) - 1900,
                 calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), payments);
     }
 

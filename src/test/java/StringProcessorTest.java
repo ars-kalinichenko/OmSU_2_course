@@ -61,8 +61,8 @@ public class StringProcessorTest {
         assertEquals(StringProcessor.multiply(str, N), expected);
     }
 
-    @Test(expectedExceptions = {ArithmeticException.class})
-    public void testCopyExc() throws ArithmeticException {
+    @Test(expectedExceptions = {IllegalArgumentException.class})
+    public void testCopyExc() throws IllegalArgumentException {
         StringProcessor.multiply("qwe", -6);
         fail();
     }

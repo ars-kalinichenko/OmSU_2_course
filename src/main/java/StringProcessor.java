@@ -1,7 +1,7 @@
 public class StringProcessor {
     public static String multiply(String str, int n) {
-        if (str == null) throw new NullPointerException("field str can't be null");
-        if (n < 0) throw new ArithmeticException("n < 0");
+        if (str == null) throw new IllegalArgumentException("field str can't be null");
+        if (n < 0) throw new IllegalArgumentException("n < 0");
         if (n == 0) return "";
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -11,8 +11,8 @@ public class StringProcessor {
     }
 
     public static int contains(String str1, String str2) {
-        if (str1 == null || str2 == null || str2.isEmpty()) throw new NullPointerException("Can't be empty");
-        if (str1.length() < str2.length()) throw new ArithmeticException("Length error");
+        if (str1 == null || str2 == null || str2.isEmpty()) throw new IllegalArgumentException("Can't be empty");
+        if (str1.length() < str2.length()) throw new IllegalArgumentException("Length error");
 
         int res = 0;
 
@@ -24,7 +24,7 @@ public class StringProcessor {
     }
 
     public static String newString(String str) {
-        if (str == null) throw new NullPointerException("str can't be null");
+        if (str == null) throw new IllegalArgumentException("str can't be null");
         if (str.isEmpty()) return "";
 
         while (str.contains("1")) {
