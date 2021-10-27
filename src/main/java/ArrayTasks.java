@@ -1,9 +1,9 @@
-import sun.security.util.ArrayUtil;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayTasks {
+    private static final Scanner sc = new Scanner(System.in);
+
     public static void printArray(int[] array) {
         for (int element : array) {
             System.out.println(element);
@@ -11,7 +11,6 @@ public class ArrayTasks {
     }
 
     public static int[] inputArray(int size) {
-        Scanner sc = new Scanner(System.in);
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
             array[i] = sc.nextInt();

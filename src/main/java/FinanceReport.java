@@ -20,6 +20,19 @@ public class FinanceReport {
         this.arr = arr;
     }
 
+    public static void main(String[] args) {
+        FinanceReport financeReport = new FinanceReport("Олег", 2002, 9, 24,
+                new Payment("Oleg", 2020, 12, 9, 5.2),
+                new Payment("Igor", 2010, 11, 10, 10.2));
+
+        FinanceReport financeReport1 = financeReport.copy();
+        financeReport1.setPayment(0, new Payment("Арсений", 2070, 11, 25, 10.2));
+
+
+        System.out.println(financeReport);
+        System.out.println(financeReport1);
+    }
+
     private void checkIndex(int index) {
         if (index < 0) throw new IndexOutOfBoundsException();
         if (this.arr == null || this.arr.length <= index) throw new IndexOutOfBoundsException();
@@ -71,18 +84,5 @@ public class FinanceReport {
         int result = Objects.hash(name, year, month, day);
         result = 31 * result + Arrays.hashCode(arr);
         return result;
-    }
-
-    public static void main(String[] args) {
-        FinanceReport financeReport = new FinanceReport("Sergey", 2002, 9, 24,
-                new Payment("Oleg", 2020, 12, 9, 5.2),
-                new Payment("Igor", 2010, 11, 10, 10.2));
-
-        FinanceReport financeReport1 = financeReport.copy();
-        financeReport1.setPayment(0, new Payment("Arkady", 2070, 11, 25, 10.2));
-
-
-        System.out.println(financeReport);
-        System.out.println(financeReport1);
     }
 }

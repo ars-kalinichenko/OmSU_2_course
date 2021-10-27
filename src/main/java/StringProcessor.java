@@ -1,10 +1,10 @@
 public class StringProcessor {
-    public static String multi(String str, int n) {
+    public static String multiply(String str, int n) {
         if (str == null) throw new NullPointerException("field str can't be null");
         if (n < 0) throw new ArithmeticException("n < 0");
         if (n == 0) return "";
 
-        StringBuilder stringBuilder = new StringBuilder("");
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < n; i++) stringBuilder.append(str);
 
         return stringBuilder.toString();
@@ -14,7 +14,7 @@ public class StringProcessor {
         if (str1 == null || str2 == null || str2.isEmpty()) throw new NullPointerException("Can't be empty");
         if (str1.length() < str2.length()) throw new ArithmeticException("Length error");
 
-        int res = 0; // Гарантируется что строки существуют и их размеры легальны
+        int res = 0;
 
         for (int i = 0; i <= str1.length() - str2.length(); i++) {
             if (str2.equals(str1.subSequence(i, str2.length() + i).toString())) res++;
@@ -53,7 +53,7 @@ public class StringProcessor {
     }
 
     public static void main(String[] args) {
-        System.out.println(multi("Hello", 0));
+        System.out.println(multiply("Hello", 0));
         System.out.println(contains("abcadababababab", "j"));
         System.out.println(newString("this is 11 \nthis is 222\nthis is 3"));
 

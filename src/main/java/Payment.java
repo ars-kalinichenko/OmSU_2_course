@@ -1,4 +1,3 @@
-import java.util.Calendar;
 import java.util.Objects;
 
 public class Payment {
@@ -19,6 +18,10 @@ public class Payment {
         this.month = month;
         this.day = day;
         this.sum = sum;
+    }
+
+    public static void main(String[] args) {
+
     }
 
     public String getName() {
@@ -81,9 +84,5 @@ public class Payment {
     @Override
     public String toString() {
         return "Плательщик: " + name + ", Дата: " + day + "." + month + "." + year + ", Сумма: " + sum;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

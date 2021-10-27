@@ -103,11 +103,11 @@ public class SimpleTasks {
         double result = 1.0;
         int counter = 1;
         double temp = x;
-        while (Double.compare( Math.abs(temp),  eps) >= 0) {
+        while (Double.compare(Math.abs(temp), eps) >= 0) {
             result += temp;
 
             counter++;
-            temp *= x/counter;
+            temp *= x / counter;
         }
         return result;
     }

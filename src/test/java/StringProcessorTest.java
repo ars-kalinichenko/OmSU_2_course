@@ -21,8 +21,6 @@ public class StringProcessorTest {
                 {"a", "a", 1},
                 {"aa", "a", 2},
                 {"aaa", "aa", 2},
-//                {"", "aaa", 0}  throw
-//                {"", "", 0}
                 {"asdf", "", -1},
                 {"aaaa", "vvv", 0},
                 {"aeqra facwda", "a", 4}
@@ -60,12 +58,12 @@ public class StringProcessorTest {
 
     @Test(dataProvider = "data")
     public void testCopy(String str, int N, String expected) {
-        assertEquals(StringProcessor.multi(str, N), expected);
+        assertEquals(StringProcessor.multiply(str, N), expected);
     }
 
     @Test(expectedExceptions = {ArithmeticException.class})
     public void testCopyExc() throws ArithmeticException {
-        StringProcessor.multi("qwe", -6);
+        StringProcessor.multiply("qwe", -6);
         fail();
     }
 

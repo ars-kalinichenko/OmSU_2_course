@@ -14,15 +14,16 @@ public class Vector3DArray {
     public void set(Vector3D v, int ind) {
         if (ind < 0 || ind >= this.size) throw new ArithmeticException("Index error");
         if (v == null) throw new NullPointerException("Method set isn't get null");
-        arr[ind] = v;
+        arr[ind] = new Vector3D(v);
     }
+
 
     public double maxVectorLength() {
         double res = -1;
         double temp;
 
         for (int i = 0; i < size; i++) {
-            temp = arr[i].length();
+            temp = arr[i].getLength();
             if (temp > res) res = temp;
         }
 
@@ -46,9 +47,9 @@ public class Vector3DArray {
         Point3D[] data = new Point3D[this.size];
         for (int i = 0; i < this.size; i++) {
             data[i] = new Point3D(
-                    point.getX() + (arr[i].getEnd().getX() - arr[i].getStart().getX()),
-                    point.getY() + (arr[i].getEnd().getY() - arr[i].getStart().getY()),
-                    point.getZ() + (arr[i].getEnd().getZ() - arr[i].getStart().getZ())
+                    point.getX() + arr[i].getX(),
+                    point.getY() + arr[i].getY(),
+                    point.getZ() + arr[i].getZ()
             );
         }
         return data;
@@ -62,11 +63,20 @@ public class Vector3DArray {
         return res;
     }
 
-    public Vector3D getElement(int index) {
-        return this.arr[index];
+    public Vector3D lineCombination(double[] koefs) {
+        if (koefs.length != arr.length) throw new IllegalArgumentException("Check length of coefficient list");
+        double x = 0;
+        double y = 0;
+        double z = 0;
+        for (int i = 0; i < koefs.length; i++) {
+            x += arr[i].getX() * koefs[i];
+            y += arr[i].getY() * koefs[i];
+            z += arr[i].getZ() * koefs[i];
+        }
+        return new Vector3D(x, y, z);
     }
 
-    public static void main(String[] args) {
-
+    public Vector3D getElement(int index) {
+        return this.arr[index];
     }
 }

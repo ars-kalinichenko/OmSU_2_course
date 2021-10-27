@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 
 public class FinanceReportProcessor {
-    public static Payment[] getReport(FinanceReport financeReport, String begin) {
+    public static FinanceReport getReport(FinanceReport financeReport, String begin) {
         ArrayList<Payment> arrayList = new ArrayList<>();
         for (int i = 0; i < financeReport.getCount(); i++) {
             if (financeReport.getPayment(i).getName().startsWith(begin)) arrayList.add(financeReport.getPayment(i));
@@ -14,11 +14,11 @@ public class FinanceReportProcessor {
             payments[index] = payment;
             index++;
         }
-
-        return payments;
+        Date date = new Date();
+        return new FinanceReport(begin, date.getYear(), date.getMonth(), date.getDay(), payments);
     }
 
-    public static Payment[] getPayment(FinanceReport financeReport, double sumMax) {
+    public static FinanceReport getPayment(FinanceReport financeReport, double sumMax) {
         ArrayList<Payment> arrayList = new ArrayList<>();
         for (int i = 0; i < financeReport.getCount(); i++) {
             if (financeReport.getPayment(i).getSum() < sumMax) arrayList.add(financeReport.getPayment(i));
@@ -31,7 +31,9 @@ public class FinanceReportProcessor {
             index++;
         }
 
-        return payments;
+
+        Date date = new Date();
+        return new FinanceReport(String.valueOf(sumMax), date.getYear(), date.getMonth(), date.getDay(), payments);
     }
 
     public static void main(String[] args) {
@@ -43,7 +45,7 @@ public class FinanceReportProcessor {
                 new Payment("Sergey", 2020, 12, 9, 150.4),
                 new Payment("Igor", 2010, 11, 10, 256.6));
 
-        System.out.println(Arrays.toString(getReport(financeReport, "O")));
-        System.out.println(Arrays.toString(getPayment(financeReport, -1)));
+        System.out.println(getReport(financeReport, "O"));
+        System.out.println(getPayment(financeReport, -1));
     }
 }

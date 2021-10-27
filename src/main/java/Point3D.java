@@ -57,4 +57,12 @@ public class Point3D {
     public void printPoint() {
         System.out.printf("X=%f, Y=%f, Z=%f", x, y, z);
     }
+
+    @Override
+    public String toString() {
+        return "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
 }

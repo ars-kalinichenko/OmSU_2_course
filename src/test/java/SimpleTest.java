@@ -65,6 +65,7 @@ public class SimpleTest {
         SimpleTasks.fifthTask(0, 1, 0.1);
     }
 
+    @Test
     public void testSixth() {
         SimpleTasks.sixthTask(0, 0, 0, 0, 0, 0);
         System.out.println();
