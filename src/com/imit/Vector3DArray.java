@@ -1,7 +1,9 @@
+package com.imit;
+
 public class Vector3DArray {
     private final Vector3D[] arr;
 
-    Vector3DArray(int n) {
+    public Vector3DArray(int n) {
         if (n <= 0) throw new IllegalArgumentException("arr.length error");
         this.arr = new Vector3D[n];
         for (int i = 0; i < n; i++) {

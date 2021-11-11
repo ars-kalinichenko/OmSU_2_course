@@ -1,3 +1,4 @@
+import com.imit.StringProcessor;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -21,7 +22,6 @@ public class StringProcessorTest {
                 {"a", "a", 1},
                 {"aa", "a", 2},
                 {"aaa", "aa", 2},
-                {"asdf", "", -1},
                 {"aaaa", "vvv", 0},
                 {"aeqra facwda", "a", 4}
         };

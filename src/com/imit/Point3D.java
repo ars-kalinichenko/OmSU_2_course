@@ -1,3 +1,5 @@
+package com.imit;
+
 import java.util.Objects;
 
 public class Point3D {
@@ -5,13 +7,13 @@ public class Point3D {
     protected double y;
     protected double z;
 
-    Point3D() {
+    public Point3D() {
         x = 0.0;
         y = 0.0;
         z = 0.0;
     }
 
-    Point3D(double x, double y, double z) {
+    public Point3D(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;

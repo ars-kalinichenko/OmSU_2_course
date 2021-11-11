@@ -1,3 +1,5 @@
+package com.imit;
+
 public class StringProcessor {
     public static String multiply(String str, int n) {
         if (str == null) throw new IllegalArgumentException("field str can't be null");

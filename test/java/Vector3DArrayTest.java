@@ -1,3 +1,6 @@
+import com.imit.Point3D;
+import com.imit.Vector3D;
+import com.imit.Vector3DArray;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

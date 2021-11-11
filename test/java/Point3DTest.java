@@ -1,3 +1,4 @@
+import com.imit.Point3D;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;

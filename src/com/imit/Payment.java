@@ -1,3 +1,5 @@
+package com.imit;
+
 import java.util.Objects;
 
 //todo: add tests

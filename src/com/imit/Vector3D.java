@@ -1,3 +1,5 @@
+package com.imit;
+
 import java.util.Objects;
 
 import static java.lang.Math.sqrt;
@@ -73,7 +75,7 @@ public class Vector3D {
 
     @Override
     public String toString() {
-        return "Vector3D{" +
+        return "com.imit.Vector3D{" +
                 "x=" + x +
                 ", y=" + y +
                 ", z=" + z +

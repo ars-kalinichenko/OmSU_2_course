@@ -1,3 +1,5 @@
+package com.imit;
+
 public class SimpleTasks {
     public static double[] fourthTask(double a, double b, double c) throws IllegalArgumentException {
         double det = b * b - 4 * a * c;

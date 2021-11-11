@@ -1,7 +1,8 @@
+package com.imit;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
-// TODO: add package
 public class ArrayTasks {
     private static final Scanner sc = new Scanner(System.in);
 

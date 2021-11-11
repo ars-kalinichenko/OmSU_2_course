@@ -1,3 +1,4 @@
+import com.imit.SimpleTasks;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
