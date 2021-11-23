@@ -7,10 +7,9 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
-//todo: rewrite
 public class Vector3DArrayTest {
 
-    private final Vector3DArray varray = new Vector3DArray(5);
+    private Vector3DArray varray = new Vector3DArray(5);
 
     @Test
     public void testGetMaxLength() {
@@ -20,9 +19,10 @@ public class Vector3DArrayTest {
 
     @BeforeMethod
     public void setUp() {
+        varray = new Vector3DArray(5);
         Vector3D vector3D = new Vector3D(1, 2, 3);
         varray.set(vector3D, 0);
-        Vector3D v = new Vector3D(2, 3, 2);
+        Vector3D v = new Vector3D(3, 2, 2);
         varray.set(v, 3);
     }
 
@@ -54,7 +54,7 @@ public class Vector3DArrayTest {
 
     @Test(dependsOnMethods = {"testGetMaxLength"})
     public void testFindIndex() {
-        Vector3D v = new Vector3D(2, 3, 2);
+        Vector3D v = new Vector3D(3, 2, 2);
         assertEquals(varray.contains(v), 3);
     }
 
@@ -66,7 +66,7 @@ public class Vector3DArrayTest {
 
     @Test
     public void testGetSumOfVectors() {
-        Vector3D sum = new Vector3D(3, 5, 5);
+        Vector3D sum = new Vector3D(4, 4, 5);
         assertEquals(varray.sumAllVectors(), sum);
     }
 
@@ -85,7 +85,7 @@ public class Vector3DArrayTest {
             expected[i] = new Point3D(1, 1, 1);
         }
         expected[0] = new Point3D(2, 3, 4);
-        expected[3] = new Point3D(3, 4, 3);
+        expected[3] = new Point3D(4, 3, 3);
 
         assertEquals(varray.pointSwap(point), expected);
     }
