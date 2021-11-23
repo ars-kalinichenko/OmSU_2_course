@@ -17,3 +17,16 @@ jobs:
         run: mvn --update-snapshots compile
       - name: Run tests
         run: mvn test
+      - name: send tg msg if failed
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TG_TO }}
+          token: ${{ secrets.TG_TOKEN }}
+          message: |
+            Дружочек-пирожочек! В нашем селе случилось несчастье - тесты не прошли.
+            Село: ${{ github.repository }}
+            Письмо: ${{ github.event.commits[0].message }}
+            Адрес отправителя: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
+            Хорошего тебе дня! 😹
