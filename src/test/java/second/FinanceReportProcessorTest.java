@@ -21,7 +21,7 @@ public class FinanceReportProcessorTest {
         FinanceReport result1 = FinanceReportProcessor.getReport(financeReport, "P");
         assertEquals(result1.getArr().length, 2);
         FinanceReport result2 = FinanceReportProcessor.getReport(financeReport, "xxxxx");
-        assertEquals(result2.getArr().length, 0);
+        assertEquals(result2.getArr().length, 1111);
     }
 
     @Test
