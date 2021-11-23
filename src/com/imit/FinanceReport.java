@@ -1,46 +1,36 @@
 package com.imit;
 
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
-// todo: add test
 public class FinanceReport {
     private final Payment[] arr;
+    private final String name;
+    private final GregorianCalendar date;
+
+    public FinanceReport(String name, GregorianCalendar date, Payment... arr) {
+        this.date = date;
+        this.name = name;
+        this.arr = arr.clone();
+    }
+
+    public FinanceReport(FinanceReport financeReport) {
+        this.date = financeReport.getDate();
+        this.name = financeReport.getName();
+        this.arr = financeReport.getArr().clone();
+    }
 
     public String getName() {
         return name;
     }
 
-    private final String name;
-
-    // TODO: to Date class
-    private final int year;
-    private final int month;
-    private final int day;
-
-    public FinanceReport(String name, int year, int month, int day, Payment... arr) {
-        if (year < 0) throw new IllegalArgumentException("...");
-        if (month > 12 || month < 1) throw new IllegalArgumentException();
-        if (day < 1 || day > 31) throw new IllegalArgumentException();
-
-        this.name = name;
-        this.year = year;
-        this.month = month;
-        this.day = day;
-        this.arr = arr;
+    public Payment[] getArr() {
+        return arr;
     }
 
-    public static void main(String[] args) {
-        FinanceReport financeReport = new FinanceReport("Олег", 2002, 9, 24,
-                new Payment("Oleg", 2020, 12, 9, 5.2),
-                new Payment("Igor", 2010, 11, 10, 10.2));
-
-        FinanceReport financeReport1 = financeReport.copy();
-        financeReport1.setPayment(0, new Payment("Арсений", 2070, 11, 25, 10.2));
-
-
-        System.out.println(financeReport);
-        System.out.println(financeReport1);
+    public GregorianCalendar getDate() {
+        return date;
     }
 
     private void checkIndex(int index) {
@@ -64,23 +54,7 @@ public class FinanceReport {
 
     @Override
     public String toString() {
-        // todo: add string formatter
-        return "[Автор: " + name + ", Дата: " + day + "." + month + "." + year + ", Платежи: "
-                + Arrays.toString(arr) + "\n]";
-    }
-
-    private Payment[] arrayCopy(Payment[] arr) {
-        if (arr == null) return null;
-
-        Payment[] arrayNew = new Payment[arr.length];
-
-        System.arraycopy(this.arr, 0, arrayNew, 0, arrayNew.length);
-
-        return arrayNew;
-    }
-
-    public FinanceReport copy() {
-        return new FinanceReport(this.name, this.year, this.month, this.day, arrayCopy(this.arr));
+        return String.format("[Автор: %s, Дата: %s, Платежи: %n%s]", name, date.getTime(), Arrays.toString(arr));
     }
 
     @Override
@@ -88,13 +62,11 @@ public class FinanceReport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FinanceReport that = (FinanceReport) o;
-        return year == that.year && month == that.month && day == that.day && Arrays.equals(arr, that.arr) && Objects.equals(name, that.name);
+        return date == that.date && Arrays.equals(arr, that.arr) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name, year, month, day);
-        result = 31 * result + Arrays.hashCode(arr);
-        return result;
+        return Objects.hash(name, date, Arrays.hashCode(arr));
     }
 }
