@@ -1,19 +1,15 @@
 package com.imit.tasks.third;
 
-import java.util.Arrays;
+import static com.imit.tasks.third.Utils.getProductWeight;
 
-public class PackagedPieceProductSet {
-    private final ProductPackaging productPackaging;
+public class PackagedPieceProductSet extends PackagedProduct {
     private final PackagedPieceProduct[] products;
 
-    public PackagedPieceProductSet(ProductPackaging productPackaging, PackagedPieceProduct... products) {
-        this.productPackaging = productPackaging;
+    public PackagedPieceProductSet(String name, String description, ProductPackaging productPackaging, PackagedPieceProduct... products) {
+        super(name, description, productPackaging);
         this.products = products;
     }
 
-    public ProductPackaging getProductPackaging() {
-        return productPackaging;
-    }
 
     public PackagedPieceProduct[] getProducts() {
         return products;
@@ -24,9 +20,6 @@ public class PackagedPieceProductSet {
         return String.format("Набор товаров в упаковке %s", productPackaging.getName());
     }
 
-    private double getProductWeight() {
-        return Arrays.stream(products).mapToDouble(PackagedPieceProduct::getGrossWeight).sum();
-    }
 
     public double getNetWeight() {
         return getProductWeight();

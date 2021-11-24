@@ -2,20 +2,15 @@ package com.imit.tasks.third;
 
 import java.util.Objects;
 
-public class PackagedWeightProduct {
-    private final ProductPackaging productPackaging;
+public class PackagedWeightProduct extends PackagedProduct {
     private final double weight;
     private final Product product;
 
     public PackagedWeightProduct(ProductPackaging productPackaging, double weight, Product product) {
+        super(product.getName(), product.getDescription(), productPackaging);
         if (Double.compare(weight, 0.0) == -1) throw new IllegalArgumentException("Negative weight!");
-        this.productPackaging = productPackaging;
         this.weight = weight;
         this.product = product;
-    }
-
-    public ProductPackaging getProductPackaging() {
-        return productPackaging;
     }
 
     public double getWeight() {
@@ -49,7 +44,8 @@ public class PackagedWeightProduct {
     public double getNetWeight() {
         return weight;
     }
-    public double getGrossWeight(){
+
+    public double getGrossWeight() {
         return weight + productPackaging.getWeight();
     }
 }

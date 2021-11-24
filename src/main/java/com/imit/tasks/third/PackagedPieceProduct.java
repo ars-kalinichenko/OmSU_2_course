@@ -2,20 +2,15 @@ package com.imit.tasks.third;
 
 import java.util.Objects;
 
-public class PackagedPieceProduct {
-    private final ProductPackaging productPackaging;
+public class PackagedPieceProduct extends PackagedProduct {
     private final int count;
     private final PieceProduct product;
 
     public PackagedPieceProduct(ProductPackaging productPackaging, int count, PieceProduct product) {
+        super(product.getName(), product.getDescription(), productPackaging);
         if (count < 0) throw new IllegalArgumentException("Negative count!");
-        this.productPackaging = productPackaging;
         this.count = count;
         this.product = product;
-    }
-
-    public ProductPackaging getProductPackaging() {
-        return productPackaging;
     }
 
     public int getCount() {
