@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class PackagedWeightProduct extends PackagedProduct {
     private final double weight;
-    private final Product product;
+    private final WeightProduct product;
 
-    public PackagedWeightProduct(ProductPackaging productPackaging, double weight, Product product) {
+    public PackagedWeightProduct(ProductPackaging productPackaging, double weight, WeightProduct product) {
         super(product.getName(), product.getDescription(), productPackaging);
         if (Double.compare(weight, 0.0) == -1) throw new IllegalArgumentException("Negative weight!");
         this.weight = weight;

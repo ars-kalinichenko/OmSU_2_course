@@ -8,12 +8,6 @@ abstract public class PackagedProduct extends Product {
         this.productPackaging = productPackaging;
     }
 
-    public PackagedProduct(Product product, ProductPackaging productPackaging) {
-        super(product);
-        this.productPackaging = productPackaging;
-    }
-
-
     public ProductPackaging getProductPackaging() {
         return productPackaging;
     }

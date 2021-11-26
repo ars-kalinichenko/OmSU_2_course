@@ -5,11 +5,17 @@ import com.imit.tasks.third.ProductPackaging;
 import com.imit.tasks.third.WeightProduct;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class PackagedWeightProductTest {
     PackagedWeightProduct product = new PackagedWeightProduct(new ProductPackaging("Пакет", 90.0),
             9000.99, new WeightProduct("Угли", "Древесные угли"));
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public static void testConstructorNegativeWeight() {
+        PackagedWeightProduct product = new PackagedWeightProduct(new ProductPackaging("Пакет", 90.0),
+                -9000.99, new WeightProduct("Угли", "Древесные угли"));
+    }
 
     @Test
     public void testGetNetWeight() {
@@ -19,10 +25,5 @@ public class PackagedWeightProductTest {
     @Test
     public void testGetGrossWeight() {
         assertEquals(product.getGrossWeight(), 9090.99);
-    }
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public static void testConstructorNegativeWeight() {
-        PackagedWeightProduct product = new PackagedWeightProduct(new ProductPackaging("Пакет", 90.0),
-                -9000.99, new WeightProduct("Угли", "Древесные угли"));
     }
 }

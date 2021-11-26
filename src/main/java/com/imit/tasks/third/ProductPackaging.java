@@ -13,11 +13,6 @@ public class ProductPackaging {
         this.weight = weight;
     }
 
-    public ProductPackaging(ProductPackaging productPackaging) {
-        this.name = productPackaging.getName();
-        this.weight = productPackaging.getWeight();
-    }
-
     public String getName() {
         return name;
     }

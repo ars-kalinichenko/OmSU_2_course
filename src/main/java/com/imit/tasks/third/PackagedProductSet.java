@@ -2,16 +2,15 @@ package com.imit.tasks.third;
 
 import static com.imit.tasks.third.Utils.getProductWeight;
 
-public class PackagedPieceProductSet extends PackagedProduct {
-    private final PackagedPieceProduct[] products;
+public class PackagedProductSet extends PackagedProduct {
+    private final PackagedProduct[] products;
 
-    public PackagedPieceProductSet(String name, String description, ProductPackaging productPackaging, PackagedPieceProduct... products) {
+    public PackagedProductSet(String name, String description, ProductPackaging productPackaging, PackagedProduct... products) {
         super(name, description, productPackaging);
         this.products = products;
     }
 
-
-    public PackagedPieceProduct[] getProducts() {
+    public PackagedProduct[] getProducts() {
         return products;
     }
 
@@ -22,10 +21,10 @@ public class PackagedPieceProductSet extends PackagedProduct {
 
 
     public double getNetWeight() {
-        return getProductWeight();
+        return getProductWeight(getProducts());
     }
 
     public double getGrossWeight() {
-        return getProductWeight() + productPackaging.getWeight();
+        return getProductWeight(getProducts()) + productPackaging.getWeight();
     }
 }
