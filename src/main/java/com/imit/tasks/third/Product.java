@@ -35,7 +35,6 @@ public class Product {
         return description;
     }
 
-
     public String getName() {
         return name;
     }

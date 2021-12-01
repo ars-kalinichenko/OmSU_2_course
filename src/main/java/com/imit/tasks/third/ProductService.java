@@ -17,7 +17,7 @@ public class ProductService {
         if (product instanceof PackagedProductSet) {
             PackagedProduct[] products = ((PackagedProductSet) product).getProducts();
             return Arrays.stream(products).
-                    anyMatch(x -> x instanceof PackagedWeightProduct);
+                    anyMatch(ProductService::checkProductType);
         }
         return product instanceof PackagedWeightProduct;
     }
@@ -26,7 +26,7 @@ public class ProductService {
         if (product instanceof PackagedProductSet) {
             PackagedProduct[] products = ((PackagedProductSet) product).getProducts();
             return Arrays.stream(products).
-                    anyMatch(x -> strFilter.apply(x.getName()));
+                    anyMatch(x -> checkProductName(x, strFilter));
         }
         return strFilter.apply(product.getName());
     }

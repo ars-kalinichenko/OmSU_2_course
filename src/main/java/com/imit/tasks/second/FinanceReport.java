@@ -49,7 +49,7 @@ public class FinanceReport {
 
     public void setPayment(int index, Payment payment) {
         checkIndex(index);
-        arr[index] = payment;
+        arr[index] = new Payment(payment);
     }
 
     @Override

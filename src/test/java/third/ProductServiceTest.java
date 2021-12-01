@@ -4,9 +4,7 @@ import com.imit.tasks.third.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.*;
 
 public class ProductServiceTest {
 
@@ -18,9 +16,9 @@ public class ProductServiceTest {
         ProductPackaging productPackaging = new ProductPackaging("коробка", 10.0);
         PieceProduct apple = new PieceProduct("яблоки", "зеленые", 100.0);
         PackagedPieceProduct appleBox = new PackagedPieceProduct(productPackaging, 10, apple);
+        PackagedProductSet set = new PackagedProductSet("фрукты", "разные фрукты", productPackaging, appleBox, appleBox);
         batch = new ProductBatch("Партия товаров", appleBox,
-                new PackagedProductSet("фрукты", "разные фрукты", productPackaging, appleBox, appleBox));
-
+                set, new PackagedProductSet("овощи", "разные фрукты", productPackaging, appleBox, set));
         WeightProduct weightProduct = new WeightProduct("мармеладки", "вкусные");
         PackagedWeightProduct marshmallowBox = new PackagedWeightProduct(productPackaging, 100.0, weightProduct);
         weightBatch = new ProductBatch("Партия мармеладок", marshmallowBox);
@@ -42,8 +40,7 @@ public class ProductServiceTest {
 
     @Test
     public void testDeepCounter() {
-        assertEquals(ProductService.countByFilterDeep(batch, new BeginStringFilter("яблоки")), 2);
+        assertEquals(ProductService.countByFilterDeep(batch, new BeginStringFilter("яблоки")), 3);
         assertEquals(ProductService.countByFilterDeep(weightBatch, new EndStringFilter("мармеладки")), 1);
-
     }
 }
