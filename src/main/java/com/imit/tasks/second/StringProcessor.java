@@ -29,17 +29,10 @@ public class StringProcessor {
         if (str == null) throw new IllegalArgumentException("str can't be null");
         if (str.isEmpty()) return "";
 
-        while (str.contains("1")) {
-            str = str.replace("1", "один");
-        }
+        str = str.replaceAll("1", "один");
+        str = str.replaceAll("2", "два");
+        str = str.replaceAll("3", "три");
 
-        while (str.contains("2")) {
-            str = str.replace("2", "два");
-        }
-
-        while (str.contains("3")) {
-            str = str.replace("3", "три");
-        }
         return str;
     }
 
@@ -57,9 +50,9 @@ public class StringProcessor {
     public static void main(String[] args) {
         System.out.println(multiply("Hello", 0));
         System.out.println(contains("abcadababababab", "j"));
-        System.out.println(newString("this is 11 \nthis is 222\nthis is 3"));
+        System.out.println(newString("this is 311 \nthis is 222\nthis is 3"));
 
-        StringBuilder stringBuilder = new StringBuilder("ab");
+        StringBuilder stringBuilder = new StringBuilder("abcd");
         redactStringBuilder(stringBuilder);
         System.out.println(stringBuilder);
     }
