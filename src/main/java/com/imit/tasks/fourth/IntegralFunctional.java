@@ -3,9 +3,9 @@ package com.imit.tasks.fourth;
 public class IntegralFunctional<T extends IOneRealArgumentFunction> implements IFunctional<T> {
     private final double right, left;
 
-    public IntegralFunctional(double right, double left) {
-        this.right = right;
+    public IntegralFunctional(double left, double right) {
         this.left = left;
+        this.right = right;
     }
 
     @Override
@@ -16,7 +16,7 @@ public class IntegralFunctional<T extends IOneRealArgumentFunction> implements I
 
         double d = Math.abs(right - left) / n;
         for (int i = 0; i < n; i++) {
-            result += func.getValue(right + i * d + d / 2) * d;
+            result += func.getValue(left + i * d + d / 2) * d;
         }
         return result;
     }

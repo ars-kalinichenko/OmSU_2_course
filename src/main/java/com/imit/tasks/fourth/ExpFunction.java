@@ -4,7 +4,7 @@ public class ExpFunction implements IOneRealArgumentFunction {
     double A, B;
     double right, left;
 
-    public ExpFunction(double right, double left, double a, double b) {
+    public ExpFunction(double left, double right, double a, double b) {
         this.right = right;
         this.left = left;
         this.A = a;
@@ -12,7 +12,8 @@ public class ExpFunction implements IOneRealArgumentFunction {
     }
 
     @Override
-    public double getValue(double x) {
+    public double getValue(double x) throws IllegalArgumentException {
+        if (x > right || x < left) throw new IllegalArgumentException();
         return A * Math.exp(x) + B;
     }
 
