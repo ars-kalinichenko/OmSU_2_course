@@ -2,7 +2,6 @@ package fourth;
 
 import com.example.SquareTrinomialTest;
 import com.imit.tasks.fourth.EquationSolver;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
